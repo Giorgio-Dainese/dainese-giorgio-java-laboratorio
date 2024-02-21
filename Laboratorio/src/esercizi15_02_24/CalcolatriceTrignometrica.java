@@ -39,7 +39,13 @@ public class CalcolatriceTrignometrica
             case 4:
                 double divisione = (double) primoNumero /secondoNumero; //definizione divisione
                 if (secondoNumero==0){ //Condizione della divisione per 0
-                    System.out.println("La divisione è impossibile ");
+                    System.out.println("La divisione è impossibile, inserisci un nuovo numero: ");
+                    int divisore = 0;
+                    do {
+                        divisore = Integer.parseInt(tastiera.nextLine());
+
+                    }while(divisore==0);
+                    System.out.println("La divisone è: " +(primoNumero/divisore));
                 } else System.out.println("La divisone è: " +divisione);
                 break;
             case 5:

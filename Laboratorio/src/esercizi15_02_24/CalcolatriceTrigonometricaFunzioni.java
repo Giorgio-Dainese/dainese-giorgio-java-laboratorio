@@ -26,11 +26,17 @@ public class CalcolatriceTrigonometricaFunzioni {
         return numero1 * numero2;
     }//metodo per calcolare il prodotto
 
-    public static double Divisione(int numero1, int numero2) {
-        if (numero2 == 0) {
-            System.out.println("La divisione è impossibile ");
-        }//Condizione della divisione per 0
-        return numero1 / numero2;
+    public static double Divisione(int numero1, int numero2, Scanner tastiera) {
+
+        if (numero2==0){ //Condizione della divisione per 0
+            System.out.println("La divisione è impossibile, inserisci un nuovo numero: ");
+            int divisore = 0;
+            do {
+                divisore = Integer.parseInt(tastiera.nextLine());
+
+            }while(divisore==0);
+            return numero1/divisore;
+        } return numero1 / numero2;
     }//metodo per calcolare la divisione
 
     public static double Seno(int angle){
@@ -41,6 +47,12 @@ public class CalcolatriceTrigonometricaFunzioni {
         double radianti = Math.toRadians(angle);
         return Math.cos(radianti);
     }//metodo per calcolare il coseno
+
+    /**
+     *
+     * @param angle
+     * @return
+     */
     public static double Tangente(int angle){
         double radianti = Math.toRadians(angle);
         return Math.tan(radianti);
@@ -54,7 +66,7 @@ public class CalcolatriceTrigonometricaFunzioni {
     public static void main(String[] args) {
         Scanner tastiera = new Scanner(System.in); //Imposto l'input
         boolean continua = true;
-        while (continua) {//while per fare un nuovo calcolo nel caso venisse premuto y alla fine
+        do {//do-while per fare un nuovo calcolo nel caso venisse premuto y alla fine
             System.out.println("Insersci il primo numero: ");
             int primoNumero = Integer.parseInt(tastiera.nextLine()); //L'input può essere messo nello switch/serie di if, per ottimizzare il codice e non chiedere, ad esempio, due numeri se scelgo l'operazione coseno.
             System.out.println("Insersci il secondo numero: ");
@@ -84,7 +96,7 @@ public class CalcolatriceTrigonometricaFunzioni {
                     System.out.println(Prodotto(primoNumero, secondoNumero));//stampo il prodotto
                     break;
                 case 4:
-                    System.out.println(Divisione(primoNumero, secondoNumero));//stampo la divisione
+                    System.out.println("La divisione è: " +Divisione(primoNumero, secondoNumero, tastiera));//stampo la divisione
                     break;
                 case 5:
                     System.out.println(Seno(angolo));//stampo il seno
@@ -104,7 +116,7 @@ public class CalcolatriceTrigonometricaFunzioni {
             if (!decisione.equals("y")) {
                 continua = false;//assegnazione per uscire dal while
             }
-        }//end while
+        }while ( continua == true);//end do-while
         System.out.println("Programma terminato");
     }//end main
 }//end class
