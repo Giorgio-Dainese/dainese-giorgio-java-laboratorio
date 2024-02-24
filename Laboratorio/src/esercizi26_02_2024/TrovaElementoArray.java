@@ -24,6 +24,7 @@ public class TrovaElementoArray {
     }
     public static void main(String[] args) {
         String [] array = {"Luca", "Sandro", "Saverio", "Serafino"};
+        StamoaIndiceElementoArray(array, "Saverio");
         StamoaIndiceElementoArray(array, "Beppe");
     }//end main
 }//end class

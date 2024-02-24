@@ -10,23 +10,41 @@ package esercizi26_02_2024;
  * 23/02/2024
  */
 public class ControlloPassword {
-    public static void ControlloPassword(String stringa) {
+    public static void ControlloPasswords(String stringa) {
         //Lettere e cifre
-
 
         //Cifre > 1
         int contatoreCifre = 0;
-        boolean boolCifre;
+        boolean boolCifre = false, boolCaratteri = false;
+        String caratteriAmmessi ="0123456789abcdefghijklmnopqrstuvxyzABCDEFGHIJKLMNOPQRSTUVXYZ";
+
+        char c;
         for (int i = 0; i < stringa.length(); i++) {
-            char c = stringa.charAt(i);
-            if (c >= 0 && c < 11) {
+            c = stringa.charAt(i);
+            if(!caratteriAmmessi.contains(String.valueOf(c))){
+            boolCaratteri = false;
+                break;
+
+            } else boolCaratteri = true;;
+
+            if ( Character.isDigit(c) ) {
                 contatoreCifre++;
             }
             if (contatoreCifre > 1) {
                 boolCifre = true;
             } else boolCifre = false;
 
-        }            //if (stringa.length() > 7 && "Lettere e Numeri" && boolCifre)
 
+        }
+        if (stringa.length() > 7 && boolCaratteri && boolCifre){
+            System.out.println("La password fornita rispetta i criteri di validità");
+        }
+
+        System.out.println("Numero cifre: " +contatoreCifre+ "\nBoolCifre " +boolCifre+ "\nboolCaratteri " +boolCaratteri);
+
+    }
+
+    public static void main(String[] args) {
+        ControlloPasswords("Saverio00!");
     }
 }//end class
