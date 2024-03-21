@@ -1,0 +1,3 @@
+Le eccezioni custom sarebbero quelle scritte in un altro  file.
+
+Fare un file con le 3 eccezioni da usare nei 3 esercizi(fare copia e incolla dall'altro package)
