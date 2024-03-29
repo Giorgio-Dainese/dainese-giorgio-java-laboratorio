@@ -12,26 +12,31 @@ package esercizi2024_04_06;
 import java.util.ArrayList;
 
 public class Esercizio1 {
-    public static void presenteInArraColor(String a, ArrayList arr){
+
+    public static boolean presenteInArrColor(String a, ArrayList arr){
     int i = 0;
+    boolean presente = false;
         for ( i = 0; i < arr.size(); i++) {
-        if (arr.get(i) == a) {
-            System.out.println(true);
-            break;
-        } else System.out.println(false);
+        if (arr.get(i) == a)
+            presente = true;
     }
+        return presente;
     }
-
-    public static void indicePresenteInArraColor(String a, ArrayList arr) {
+    public static void indicePresenteInArrColor(String a, ArrayList arr) {
         int i = 0;
-        for (i = 0; i < arr.size(); i++) {
-            if (arr.get(i) == a) {
-                System.out.println("Il colore " +a+ " è presente nell'indice numero " +i);
-                break;
-            } //else implementare eccezione
+        boolean presente = false;
+        for ( i = 0; i < arr.size(); i++) {
+            if (arr.get(i) == a)
+                presente = true;
         }
-    }
+        try {
+            if (!presente)
+                throw new Exception("Colore non trovato");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
+    }
     public static void main(String[] args) {
         ArrayList arrColor = new ArrayList<>();
         arrColor.add("Giallo");
@@ -39,8 +44,7 @@ public class Esercizio1 {
         arrColor.add("Rosso");
         arrColor.add("Blu");
         arrColor.add("Grigio");
-        System.out.println(arrColor);
-        presenteInArraColor("Blu", arrColor);
-        indicePresenteInArraColor("Blu", arrColor);
+        System.out.println(presenteInArrColor("Blu", arrColor));
+        indicePresenteInArrColor("Blsu", arrColor);
     }
 }
