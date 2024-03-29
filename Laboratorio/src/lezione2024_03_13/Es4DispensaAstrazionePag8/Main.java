@@ -11,7 +11,7 @@ public class Main {
         Ducati.startEngine();
         System.out.println("+------------------------------+");
         System.out.println(" Il garage è molto rumoroso");
-        System.out.println("");
+        System.out.println();
         System.out.println("+-----------------------------------+");
         Ferrari.stopEngine();
         System.out.println("+-----------------------------------+");
