@@ -6,15 +6,6 @@ public class EccezioniCustom {
             super("Attenzione, il numero è pari");
         }
     }
-    public static void eccezionePari(int numero) throws NonPariException {
-        try {
-            if (numero % 2 == 0)
-                throw new NonPariException();
 
-        } catch (NonPariException e){
-            System.out.println(e.getMessage());
-        }
-
-    }
 }
 
