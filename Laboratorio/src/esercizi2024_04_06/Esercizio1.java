@@ -13,6 +13,10 @@ import java.util.ArrayList;
 
 public class Esercizio1 {
 
+    public static class ColorNotFoundException extends Exception{
+        public ColorNotFoundException(){super("Attenzione, colore non trovato!");}
+    }
+
     public static boolean presenteInArrColor(String a, ArrayList arr){
     int i = 0;
     boolean presente = false;
@@ -23,15 +27,18 @@ public class Esercizio1 {
         return presente;
     }
     public static void indicePresenteInArrColor(String a, ArrayList arr) {
-        int i = 0;
+        int indice = 0;
         boolean presente = false;
-        for ( i = 0; i < arr.size(); i++) {
-            if (arr.get(i) == a)
+        for ( int i = 0; i < arr.size(); i++) {
+            if (arr.get(i) == a) {
                 presente = true;
+                indice = i;
+            }
         }
         try {
             if (!presente)
-                throw new Exception("Colore non trovato");
+                throw new ColorNotFoundException();
+            else System.out.println("Il colore cercayo è all'indice " +indice);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -45,6 +52,6 @@ public class Esercizio1 {
         arrColor.add("Blu");
         arrColor.add("Grigio");
         System.out.println(presenteInArrColor("Blu", arrColor));
-        indicePresenteInArrColor("Blsu", arrColor);
+        indicePresenteInArrColor("Giallo", arrColor);
     }
 }
