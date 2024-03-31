@@ -7,5 +7,12 @@ public class EccezioniCustom {
         }
     }
 
-}
+    public static class NumeroNegativoException extends Exception{
+        public NumeroNegativoException(){super("Attenzione, c'è almeno un negativo!");}
+    }
+
+    public static class AssenzaVocaliException extends Exception{
+        public AssenzaVocaliException(){super("Attenzione, non ci sono vocali!");}
+    }
+}//end class
 
