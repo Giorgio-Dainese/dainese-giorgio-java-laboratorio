@@ -47,22 +47,50 @@ public class Esercizio2 {
         }
     }//end persona
 
-    public static void cercaPersona(String paramCF, ArrayList arr){
-        for (int i = 0; i < arr.size(); i++) {
-            //come accedere all'attributo nome dell'oggetto presente nell'array?
-        }
+    public static class PersonaAlreadyExistException extends Exception{
+        public PersonaAlreadyExistException(){super("La persona che si vuole inserire esiste già!");}
     }
 
+    public static class PersonaNotFoundException extends Exception{
+        public PersonaNotFoundException(){super("La persona cercata non esiste!");}
+    }
+    public static void ricercaPerCF(String paramCF, ArrayList<Persona> p){
+       try {
+           boolean corrispondezaCF = false;
+           for (int i = 0; i < p.size(); i++) {
+               if (p.get(i).getCF().equals(paramCF)) {
+                   corrispondezaCF = true;
+                   System.out.println(p.get(i).getNome() + " " + p.get(i).getCognome() + " " + p.get(i).getCF());
+               }
+           }
+           if (!corrispondezaCF)
+               throw new PersonaNotFoundException();
+
+
+       } catch (PersonaNotFoundException e){
+           System.out.println(e.getMessage());
+       }
+    }
 
 
     public static void main(String[] args) {
         Persona p1 = new Persona("Giorgio", "Gumzi", "GRGGMZ98");
         Persona p2 = new Persona("Christian", "Folle", "CHRFLL00");
         Persona p3 = new Persona("Sgabox", "Delia", "SGBDLE00");
-        ArrayList array = new ArrayList<>();
-        array.add(p1);
-        array.add(p2);
-        array.add(p3);
-        System.out.println(array.getFirst()); //Come stampare istanza dell'ggetto anziché cella di memoria?
+        ArrayList<Persona> arrayPersone = new ArrayList<>();
+        arrayPersone.add(p1);
+        arrayPersone.add(p2);
+        arrayPersone.add(p3);
+        try{
+            Persona p4 = new Persona("Sossio", "Aruzio", "SGBDLE00");
+            if (p4.getCF().equals(p1.getCF()) || p4.getCF().equals(p2.getCF()) || p4.getCF().equals(p3.getCF()))
+                throw new PersonaAlreadyExistException();
+            arrayPersone.add(p4);
+        } catch(PersonaAlreadyExistException e){
+            System.out.println(e.getMessage());
+        }
+
+        ricercaPerCF("SGBDLE00", arrayPersone);
+
     }//end main
 }//end class
