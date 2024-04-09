@@ -22,6 +22,15 @@ public class Esercizio3 {
             this.dataNascita = dataNascita;
         }
 
+        @Override
+        public String toString() {
+            return "Persona{" +
+                    "nome='" + nome + '\'' +
+                    ", cognome='" + cognome + '\'' +
+                    ", dataNascita='" + dataNascita + '\'' +
+                    '}';
+        }
+
         public String getNome() {
             return nome;
         }
@@ -59,9 +68,11 @@ public class Esercizio3 {
         arrayPersone.add(p4);
 
         for (int i = 0; i < arrayPersone.size(); i++) {
-            for (int j = 0; j < arrayPersone.size(); j++) {
-                if (arrayPersone.get(i).getDataNascita().equals(arrayPersone.get(j).getDataNascita()))
-                    System.out.println(arrayPersone.get(i).getNome() + " " + arrayPersone.get(i).getCognome() + " " + arrayPersone.get(i).getDataNascita());
+            for (int j = i+1; j < arrayPersone.size(); j++) {
+                if (arrayPersone.get(i).getDataNascita().equals(arrayPersone.get(j).getDataNascita())){
+                    System.out.println(arrayPersone.get(i).toString());
+                    System.out.println(arrayPersone.get(j).toString());
+                }
             }
         }
     }//end main
