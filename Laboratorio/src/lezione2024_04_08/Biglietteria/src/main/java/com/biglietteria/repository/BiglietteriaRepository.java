@@ -1,5 +1,7 @@
 package com.biglietteria.repository;
 
+//Il database dove viene creato? Da intellij posso vederlo?
+
 import com.biglietteria.model.Biglietteria;
 import com.biglietteria.constants.DbConfig;
 
