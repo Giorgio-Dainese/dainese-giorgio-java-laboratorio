@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: BIBLIOTECA
+
+server:
+  port: 8085
