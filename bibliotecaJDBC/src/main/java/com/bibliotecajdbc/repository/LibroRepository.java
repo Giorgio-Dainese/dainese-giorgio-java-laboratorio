@@ -57,4 +57,23 @@ public static List<Libro> selezionaTuttiLibri(){
         return new ArrayList<>();
     }
 
+    public static Libro insertLibro(Libro libro){
+        List<Libro> insertLibroList = new ArrayList<>();
+        try {
+            Connection connection = DriverManager.getConnection(DBConfig.URL, DBConfig.USER, DBConfig.PPW);
+            String query = "INSERT INTO utente (codiceIsbn, titolo, genere, annoPubblicazione,autore)" + " VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, libro.getCodiceIsbn());
+            statement.setString(2, libro.getTitolo());
+            statement.setString(3, libro.getGenere());
+            statement.setString(4, libro.getAnnoPubblicazione());
+            statement.setString(5, libro.getAutore());
+            statement.executeUpdate();
+            return libro;
+        }catch (SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+
 }

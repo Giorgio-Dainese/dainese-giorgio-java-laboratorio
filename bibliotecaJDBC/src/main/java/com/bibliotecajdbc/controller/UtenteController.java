@@ -16,14 +16,7 @@ public class UtenteController {
     public static Utente insertUtente(@RequestBody Utente utente){
         return UtenteRepository.insertUtente(utente);
 
-        //Come si mandano i parametri tramite URL nelle richieste post?
+        //Come si mandano i parametri con @Requestbody tramite URL nelle richieste post? Si passa un json.
     }
 
-
-    /*
-    @GetMapping(value = "/selectGenereLibri")
-    public static List<Libro> selectGenereLibri(@RequestParam(value="genere") String genere){
-        return LibroRepository.selezionaGenereLibri(genere);
-    }
-    */
 }

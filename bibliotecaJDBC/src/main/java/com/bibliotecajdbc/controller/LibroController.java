@@ -1,12 +1,16 @@
 package com.bibliotecajdbc.controller;
 
+import com.bibliotecajdbc.constants.DBConfig;
 import com.bibliotecajdbc.model.Libro;
+import com.bibliotecajdbc.model.Utente;
 import com.bibliotecajdbc.repository.LibroRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,4 +26,10 @@ public class LibroController {
     public static List<Libro> selectGenereLibri(@RequestParam(value="genere") String genere){
         return LibroRepository.selezionaGenereLibri(genere);
     }
+
+    @PostMapping(value="/insertLibro")
+    public static Libro inserisciLibro(@RequestBody Libro libro){
+        return LibroRepository.insertLibro(libro);
+    }
+
 }
